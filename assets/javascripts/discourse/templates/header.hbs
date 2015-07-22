@@ -9,9 +9,7 @@
       <div class="categories">categories {{fa-icon "chevron-down" label="categories"}}</div>
 
       <div class="searchbox">
-        <div class="expand">
-          {{render "search"}}
-        </div>
+          {{search-text-field value=searchTerm searchContextEnabled=searchContextEnabled id="search-term-global"}}
       </div>
 
     {{/if}}
@@ -59,4 +57,10 @@
 
       {{render "user-dropdown"}}
     {{/if}}
+
+  {{#if searchTerm}}
+    <div class="extend">
+      {{render "search-box"}}
+    </div>
+  {{/if}}
 </div>

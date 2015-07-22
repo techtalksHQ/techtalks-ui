@@ -49,10 +49,12 @@ header.d-header {
     }
   }
 
-  .expand {
+  .extend {
     position: relative;
     background: white;
     display: block;
+    border: solid #eee;
+    border-width: 2px 0;
   }
 
   .d-dropdown {
