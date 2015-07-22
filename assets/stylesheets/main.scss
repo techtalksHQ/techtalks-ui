@@ -1,0 +1,61 @@
+
+header.d-header {
+  padding: 0;
+  .contents {
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 60px;
+    margin: 0;
+
+    > * {
+      padding: 15px 10px 0 10px;
+      border-left: 2px #eee solid;
+      &:first-child {
+        padding-left: 5vw;
+      }
+      &:last-child {
+        padding-right: 5vw;
+      }
+    }
+
+    .searchbox,
+    {
+      flex-grow: 2;
+      input {
+        width: 98%;
+      }
+    }
+
+    > .ember-view // because the stupid extra-info-wrapper is wrapped again!
+    {
+      flex-grow: 2;
+      padding-top: 9px;
+    }
+
+    .icons [class^="fa fa-"] {
+      width: 24px;
+      height: 24px;
+      font-size: 1em;
+      line-height: 24px;
+      display: inline-block;
+    }
+
+    .current-user {
+      img {
+        vertical-align: bottom
+      }
+    }
+  }
+
+  .expand {
+    position: relative;
+    background: white;
+    display: block;
+  }
+
+  .d-dropdown {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+  }
+}

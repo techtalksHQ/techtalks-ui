@@ -1,0 +1,62 @@
+<div>
+  <div class='contents clearfix'>
+
+    <div class="logo">TECHtalks.xyz</div>
+    {{#if showExtraInfo}}
+      {{header-extra-info topic=topic}}
+    {{else}}
+
+      <div class="categories">categories {{fa-icon "chevron-down" label="categories"}}</div>
+
+      <div class="searchbox">
+        <div class="expand">
+          {{render "search"}}
+        </div>
+      </div>
+
+    {{/if}}
+
+    {{#if currentUser}}
+      <div class='notifications icons'>
+        <a class='icon' href {{action "showNotifications" target="view"}} data-notifications="notifications-dropdown" id='user-notifications' title='{{i18n 'notifications.title'}}'>
+          {{fa-icon "bell" label="notifications.title"}}
+        </a>
+        {{#if currentUser.unread_notifications}}
+          <a href class='badge-notification unread-notifications'>{{currentUser.unread_notifications}}</a>
+        {{/if}}
+        {{#if currentUser.unread_private_messages}}
+          <a href class='badge-notification unread-private-messages'>{{currentUser.unread_private_messages}}</a>
+        {{/if}}
+      </div>
+
+      <div class='current-user dropdown icons'>
+        <a class='icon'
+           data-dropdown="user-dropdown"
+           data-render="renderUserDropdown"
+           href="#"
+           title='{{i18n 'user.avatar.header_title'}}'
+           aria-label='{{i18n 'user.avatar.header_title'}}'
+           id="current-user">
+             {{bound-avatar currentUser "small"}}
+             {{currentUser.name}}
+        </a>
+      </div>
+    {{else}}
+      <div>
+        {{#if showSignUpButton}}
+          {{d-button action="showCreateAccount" class="btn-primary btn-small sign-up-button" label="sign_up"}}
+        {{/if}}
+        {{d-button action="showLogin" class="btn-primary btn-small login-button" icon="user" label="log_in"}}
+      </div>
+    {{/if}}
+  </div>
+    {{#if view.renderDropdowns}}
+      {{render "notifications" notifications}}
+
+      {{#if view.renderSiteMap}}
+        {{render "site-map"}}
+      {{/if}}
+
+      {{render "user-dropdown"}}
+    {{/if}}
+</div>
