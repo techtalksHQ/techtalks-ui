@@ -55,6 +55,22 @@ header.d-header {
     display: block;
     border: solid #eee;
     border-width: 2px 0;
+
+    .sitemap-menu {
+      list-style: none;
+
+      li {
+        border-left: 2px solid #eee;
+        padding: 1px 3px;
+        margin: 2px 0;
+
+        &:hover,
+        &.selected{
+          background-color: #eee;
+          font-weight: bold;
+        }
+      }
+    }
   }
 
   .d-dropdown {

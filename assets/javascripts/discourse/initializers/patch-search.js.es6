@@ -9,6 +9,8 @@ export default {
       needs: ['application', 'search-box'],
       searchTerm: null,
       showSearchResults: false,
+      showSitemap: false,
+
       actions: {
         submitSearch: function(){
           this.set("showSearchResults", false);
@@ -17,6 +19,9 @@ export default {
         clearSearch: function(){
           this.set("showSearchResults", false);
           this.set('searchTerm', "");
+        },
+        toggleSitemap: function(){
+          this.set('showSitemap', !this.get("showSitemap"));
         }
       },
       updateSearchTerm: function(){
@@ -24,7 +29,7 @@ export default {
         this.controllerFor('search-box').set('term', term);
         if (term) this.set("showSearchResults", true);
 
-      }.observes('searchTerm')
+      }.observes('searchTerm'),
     });
   }
 }

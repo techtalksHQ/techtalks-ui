@@ -6,7 +6,10 @@
       {{header-extra-info topic=topic}}
     {{else}}
 
-      <div class="categories">categories {{fa-icon "chevron-down" label="categories"}}</div>
+      <div class="categories">
+        <a href {{action "toggleSitemap"}}> Categories {{fa-icon "chevron-down" label="categories"}}
+        </a>
+      </div>
 
       <div class="searchbox">
           {{header-search-field value=searchTerm searchContextEnabled=searchContextEnabled id="search-term-global" onClear="clearSearch" onSubmit="submitSearch"}}
@@ -59,10 +62,16 @@
     {{/if}}
 
   {{#unless showExtraInfo}}
-    {{#if showSearchResults}}
+    {{#if showSitemap}}
       <div class="extend">
-        {{render "search-box"}}
+        {{render 'header-sitemap'}}
       </div>
+    {{else}}
+      {{#if showSearchResults}}
+        <div class="extend">
+          {{render "search-box"}}
+        </div>
+      {{/if}}
     {{/if}}
 {{/unless}}
 </div>
