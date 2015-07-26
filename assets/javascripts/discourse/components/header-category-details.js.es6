@@ -4,7 +4,7 @@ export default Em.Component.extend({
   attributeBindings: ["style"],
 
   style: function(){
-    return "background-color: #" +this.get("category.color") + "; color:" + this.get('catgory.text_color');
+    return "background-color: #" +this.get("category.color") + "; color: #" + this.get('category.text_color');
   }.property("category"),
 
   // selected: function(){
