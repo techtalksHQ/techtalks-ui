@@ -1,6 +1,27 @@
 
 header.d-header {
   padding: 0;
+  line-height: 30px;
+
+  .logo a {
+    text-transform: uppercase;
+    color: red;
+    font-size: 24px;
+    line-height: 30px;
+    .tld {
+      display: none;
+    }
+
+    .tech {
+      font-weight: 900;
+    }
+
+    .talks {
+      font-weight: 300;
+      color: darkred;
+    }
+  }
+
   .contents {
 
     display: flex;
@@ -28,23 +49,30 @@ header.d-header {
       }
     }
 
-    > .ember-view // because the stupid extra-info-wrapper is wrapped again!
-    {
+    > .ember-view {// because the stupid extra-info-wrapper is wrapped again!
       flex-grow: 2;
       padding-top: 9px;
+      .extra-info-wrapper {
+        line-height: 20px;
+      }
     }
 
-    .icons [class^="fa fa-"] {
-      width: 24px;
-      height: 24px;
-      font-size: 1em;
-      line-height: 24px;
-      display: inline-block;
+    .icons {
+      .icon {
+        padding: 0 3px;
+      }
+      [class^="fa fa-"] {
+        width: 24px;
+        height: 24px;
+        font-size: 1em;
+        line-height: 24px;
+        display: inline-block;
+      }
     }
 
     .current-user {
       img {
-        vertical-align: bottom
+        vertical-align: top;
       }
     }
   }

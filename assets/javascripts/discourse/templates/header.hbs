@@ -1,13 +1,13 @@
 <div>
   <div class='contents clearfix'>
 
-    <div class="logo">TECHtalks.xyz</div>
+    <div class="logo"><a href="/"><span class="tech">Tech</span><span class="talks">talks</span><span class="tld">.xyz</span></a></div>
     {{#if showExtraInfo}}
       {{header-extra-info topic=topic}}
     {{else}}
 
-      <div class="categories">
-        <a href {{action "toggleSitemap"}}> Categories {{fa-icon "chevron-down" label="categories"}}
+      <div class="categories icons">
+        <a class="icon" href {{action "toggleSitemap"}}> Categories {{fa-icon "chevron-down" label="categories"}}
         </a>
       </div>
 
