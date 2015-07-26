@@ -191,9 +191,11 @@ body.on-home {
       .contents > *{
         border-color: transparent;
       }
-      .searchbox, .notifications {
+      .extend, .searchbox, .notifications {
         opacity: 0;
         transition: ease-in-out 0.5s opacity;
+      }.icons .icon {
+        color: white;
       }
     }
     &:hover {
@@ -202,8 +204,14 @@ body.on-home {
     }
   }
 
+  #main {
+    background: transparent url("/plugins/techtalks-ui/background.png") no-repeat scroll center bottom / cover;
+    min-height: 100vh;
+  }
+
   #main-outlet {
     padding: 0;
+    padding-top: 100px;
     margin-top: -75px;
     max-width: 100vw;
     width: 100vw;
