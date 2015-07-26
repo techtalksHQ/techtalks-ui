@@ -10,8 +10,7 @@ export default Em.Component.extend({
   }.property("category"),
 
   selected: function(){
-    console.log(this.get("selection"));
-    return this.get('selection.id') == this.get("category.id");
+    return this.get('selection.id') === this.get("category.id");
   }.property("selection", "category"),
 
   _setup: function(){
