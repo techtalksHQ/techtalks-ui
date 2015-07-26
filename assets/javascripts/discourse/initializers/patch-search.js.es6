@@ -1,4 +1,6 @@
 
+Discourse.Utilities.defaultHomepage = function() { return "home"; };
+
 export default {
   name: "patch-search",
 
