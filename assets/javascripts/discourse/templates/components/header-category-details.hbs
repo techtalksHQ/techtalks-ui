@@ -1,5 +1,14 @@
 <h3>{{category.name}}</h3>
 <hr>
 
-<h3>{{view.category.name}}</h3>
-
+{{#if subCategories}}
+<div class="subcategories">
+    <ul>
+        {{#each category in subCategories}}
+          <li>{{category-link category hideParent="true"}}</li>
+        {{/each}}
+    </ul>
+</div>
+{{else}}
+    {{category.description}}
+{{/if}}
