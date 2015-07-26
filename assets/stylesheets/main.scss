@@ -110,17 +110,28 @@ header.d-header {
         width: 200px;
 
         li {
-          border-left: 2px solid #eee;
+          border-left: 4px solid transparent;
           padding: 1px 3px;
           margin: 2px 0;
 
-          &:hover,
-          &.selected{
-            background-color: #eee;
-            font-weight: bold;
+          &:not(.separator){
+            &:hover,
+            &.selected{
+              background-color: #eee;
+              font-weight: bold;
+            }
+          }
+
+          &.separator {
+            height: 12px;
           }
         }
+
+        .badge-category-bg {
+          display: none !important;;
+        }
       }
+
       .category-details {
         display: block;
         flex-grow: 2;
