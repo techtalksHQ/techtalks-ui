@@ -1,4 +1,20 @@
 
+// reset font weight. Make the side design less heavy.
+html body,
+h1, h2, h3, code,
+.list-controls .btn,
+a.title,
+button, .btn {
+  font-weight: 300;
+}
+
+html body a,
+.badge-wrapper,
+html body strong {
+  font-weight: 500;
+}
+
+
 header.d-header {
   padding: 0;
   line-height: 30px;
