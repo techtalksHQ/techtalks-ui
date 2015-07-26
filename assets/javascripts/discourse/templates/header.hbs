@@ -61,17 +61,20 @@
       {{render "user-dropdown"}}
     {{/if}}
 
-  {{#unless showExtraInfo}}
-    {{#if showSitemap}}
-      <div class="extend">
-        {{render 'header-sitemap'}}
-      </div>
-    {{else}}
-      {{#if showSearchResults}}
+
+  <div id="sitemap-expand">
+    {{#unless showExtraInfo}}
+      {{#if showSitemap}}
         <div class="extend">
-          {{render "search-box"}}
+          {{render 'header-sitemap'}}
         </div>
+      {{else}}
+        {{#if showSearchResults}}
+          <div class="extend">
+            {{render "search-box"}}
+          </div>
+        {{/if}}
       {{/if}}
-    {{/if}}
-{{/unless}}
+    {{/unless}}
+  </div>
 </div>

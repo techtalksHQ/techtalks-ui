@@ -56,18 +56,45 @@ header.d-header {
     border: solid #eee;
     border-width: 2px 0;
 
-    .sitemap-menu {
-      list-style: none;
+    .sitemap-outer {
+      display: flex;
+      max-width: 960px;
+      margin: 0 auto;
 
-      li {
-        border-left: 2px solid #eee;
-        padding: 1px 3px;
-        margin: 2px 0;
+      .sitemap-menu {
+        list-style: none;
+        width: 200px;
 
-        &:hover,
-        &.selected{
-          background-color: #eee;
-          font-weight: bold;
+        li {
+          border-left: 2px solid #eee;
+          padding: 1px 3px;
+          margin: 2px 0;
+
+          &:hover,
+          &.selected{
+            background-color: #eee;
+            font-weight: bold;
+          }
+        }
+      }
+      .category-details {
+        display: block;
+        flex-grow: 2;
+        padding: 10px 20px;
+      }
+    }
+
+    .other-menu-items {
+      border-top: 1px solid #eee;
+      padding-top: 9px;
+      ul {
+        list-style: none;
+        text-align: center;
+
+        li {
+          display: inline;
+          padding: 0 5px;
+          font-size: 0.85em;
         }
       }
     }
