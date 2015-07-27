@@ -195,6 +195,21 @@ header.d-header {
   flex-direction: column-reverse;
   background-position: center;
   background-repeat: no-repeat;
+
+  position: relative;
+
+  .content-wrap{
+    padding: 1vw;
+    height: 5vw;
+    background: rgba(122, 122, 122, 0.76)
+  }
+
+  .author {
+    position: absolute;
+    top: 8vw;
+    left: 3px;
+    margin-left: -10px
+  }
 }
 
 
