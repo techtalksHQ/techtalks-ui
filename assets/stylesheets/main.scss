@@ -14,11 +14,8 @@ html body strong {
   font-weight: 500;
 }
 
-// header for all pages
-header.d-header {
-  padding: 0;
-  line-height: 30px;
-
+header.d-header,
+body.on-home footer {
   .logo a {
     text-transform: uppercase;
     color: red;
@@ -37,6 +34,12 @@ header.d-header {
       color: darkred;
     }
   }
+}
+
+// header for all pages
+header.d-header {
+  padding: 0;
+  line-height: 30px;
 
   .contents {
 
@@ -63,6 +66,11 @@ header.d-header {
       input {
         width: 98%;
       }
+    }
+
+    .btn-primary {
+      border: 1px solid white;
+      margin-top: 0;
     }
 
     > .ember-view {// because the stupid extra-info-wrapper is wrapped again!
@@ -245,6 +253,9 @@ body.on-home {
     border-bottom: none;
     box-shadow: none;
     &:not(:hover){
+      .btn-primary {
+        background-color: transparent;
+      }
       .contents > *{
         border-color: transparent;
       }
@@ -269,10 +280,11 @@ body.on-home {
   }
 
   .list-controls {
-    background: transparent url("/plugins/techtalks-ui/background.png") no-repeat scroll center bottom / cover;
+    background: #862718 url("/plugins/techtalks-ui/background.png") no-repeat scroll center bottom / cover;
     min-height: 100vh;
 
     .container {
+      background-image: radial-gradient(ellipse , transparent 0%, transparent 50%, black 100%);
       display: flex;
       flex-direction: column;
       color: white;
@@ -303,8 +315,11 @@ body.on-home {
     }
   }
 
-  #list-area h2 {
-    margin-left: 20px;
+  #list-area {
+    margin-bottom: 0;
+    h2 {
+      margin-left: 20px;
+    }
   }
 
   .top-videos {
@@ -367,7 +382,22 @@ body.on-home {
         }
       }
     }
+  }
 
+  footer {
+    background: #999;
+    color: #eee;
+    padding: 10px 10vw;
+    margin-top: 3em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .text {
+      flex-grow: 2;
+      padding: 0 10vw 0 5vw;
+      margin: 0 auto;
+    }
   }
 }
 
