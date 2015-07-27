@@ -74,6 +74,11 @@ header.d-header {
     }
 
     .icons {
+      &.notifications {
+        position: relative;
+        padding-top: 0px;
+        margin-top: 15px;
+      }
       .icon {
         padding: 0 3px;
       }
