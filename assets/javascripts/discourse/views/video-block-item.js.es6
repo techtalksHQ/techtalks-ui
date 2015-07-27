@@ -11,6 +11,6 @@ export default Discourse.View.extend(StringBuffer, {
   }.property('topic.posters'),
 
   style: function(){
-    return 'background-image: url(' + (this.get('topic.image_url') || '/plugins/techtalks-ui/thumbnail.png') + ')';
+    return 'background-image: url(' + (this.get('topic.image_url') || '/plugins/techtalks-ui/thumbs/' + parseInt(Math.random() * 27) + '.jpg') + ')';
   }.property('topic.image_url')
 });
