@@ -55,13 +55,20 @@ export default Em.Component.extend({
   _animateWord(){
     const word = this.get('wordsList')[this.get('listIndex')],
           pause = parseInt(this.get("pause") || 10) * 1000,
-          speed = parseInt(this.get("speed")) || 500;
+          speed = parseInt(this.get("speed")) || 500,
+          fiddle = speed * 0.5;
     if (!word){ return console.warning("Gotta gimme words!")};
+
+
+
+    function randomFiddle(){
+      return parseInt(Math.random() * fiddle) * (Math.random() > 0.5 ? -1 : 1)
+    }
 
     word.split("").forEach((key, idx) => {
       setTimeout(()=> {
         this.get("current").pushObject(key);
-      }, idx * speed);
+      }, idx * speed + randomFiddle());
     });
 
 
