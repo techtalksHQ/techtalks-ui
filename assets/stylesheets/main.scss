@@ -204,35 +204,43 @@ body.on-home {
     }
   }
 
-  #main {
-    background: transparent url("/plugins/techtalks-ui/background.png") no-repeat scroll center bottom / cover;
-    min-height: 100vh;
-  }
-
   #main-outlet {
     padding: 0;
-    padding-top: 100px;
     margin-top: -75px;
     max-width: 100vw;
     width: 100vw;
   }
-  .claim {
-    font-size: 3.5em;
-    margin-top: 30vh;
-    margin-left: 30vw;
-    color: white;
-    .animatedWords {
-      background-color: rgba(66, 66, 66, 0.75);
-      padding: 5px 10px;
-      .ani {
-        opacity: 0;
-        animation: home-type 0.2s;
-        animation-fill-mode:forwards;
+
+  .list-controls {
+    background: transparent url("/plugins/techtalks-ui/background.png") no-repeat scroll center bottom / cover;
+    min-height: 100vh;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      color: white;
+
+      .claim {
+        font-size: 3.5em;
+        margin: 45vh auto 0;
+        min-width: 50vw;
+        .animatedWords {
+          background-color: rgba(66, 66, 66, 0.75);
+          padding: 5px 10px;
+          .ani {
+            opacity: 0;
+            animation: home-type 0.2s;
+            animation-fill-mode:forwards;
+          }
+          .blinker {
+            -webkit-animation: home-blink 0.75s infinite;
+            -moz-animation: home-blink 0.75s infinite;
+            animation: home-blink 0.75s infinite;
+          }
+        }
       }
-      .blinker {
-        -webkit-animation: home-blink 0.75s infinite;
-        -moz-animation: home-blink 0.75s infinite;
-        animation: home-blink 0.75s infinite;
+      .desc {
+        margin: 45vh auto 0;
       }
     }
   }
