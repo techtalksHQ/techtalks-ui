@@ -5,7 +5,7 @@ export default buildTopicRoute('top', {
   deactivate(){
     $('body').removeClass('on-home');
   },
-  activate(){
+  beforeModel(){
     $('body').addClass('on-home');
   },
 
@@ -15,6 +15,6 @@ export default buildTopicRoute('top', {
   },
 
   titleToken: function() {
-    return "HOME";
+    return "Voted. Curated. Moderated. Only the best videos in tech.";
   }
 });
