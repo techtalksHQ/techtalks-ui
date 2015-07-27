@@ -184,6 +184,20 @@ header.d-header {
 }
 
 
+.video-block-item {
+  background-size: contain;
+  width: 22vw;
+  height: 16.5vw;
+  float: left;
+  margin: 1vw;
+  background-color: black;
+  display: flex;
+  flex-direction: column-reverse;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
 // things are special on our home page
 
 body.on-home {

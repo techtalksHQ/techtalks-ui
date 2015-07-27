@@ -1,23 +1,7 @@
 {{#if hasTopTopics}}
     <h1>Top Videos 1</h1>
     <div class='contents'>
-    {{topic-list
-        showTopicPostBadges=showTopicPostBadges
-        showPosters=true
-        currentUser=currentUser
-        canBulkSelect=canBulkSelect
-        changeSort="changeSort"
-        toggleBulkSelect="toggleBulkSelect"
-        hideCategory=1
-        order=order
-        ascending=ascending
-        bulkSelectEnabled=bulkSelectEnabled
-        selected=selected
-        expandGloballyPinned=expandGloballyPinned
-        expandAllPinned=expandAllPinned
-        expandExcerpts=isSearch
-        searchTerm=searchTerm
-        topics=model.top.topics}}
+        {{each topic in model.top.topics itemView="video-block-item"}}
     </div>
 {{/if}}
 
@@ -25,22 +9,6 @@
 {{#if hasLatestTopics}}
     <h1>Latest additions</h1>
     <div class='contents'>
-    {{topic-list
-        showTopicPostBadges=showTopicPostBadges
-        showPosters=true
-        currentUser=currentUser
-        canBulkSelect=canBulkSelect
-        changeSort="changeSort"
-        toggleBulkSelect="toggleBulkSelect"
-        hideCategory=1
-        order=order
-        ascending=ascending
-        bulkSelectEnabled=bulkSelectEnabled
-        selected=selected
-        expandGloballyPinned=expandGloballyPinned
-        expandAllPinned=expandAllPinned
-        expandExcerpts=isSearch
-        searchTerm=searchTerm
-        topics=model.latest.topics}}
+        {{each topic in model.latest.topics itemView="video-block-item"}}
     </div>
 {{/if}}
