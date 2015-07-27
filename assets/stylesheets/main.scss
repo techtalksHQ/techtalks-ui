@@ -208,6 +208,7 @@ header.d-header {
   }
 
   .content-wrap{
+    overflow: hidden;
     padding: 1vw;
     height: 5vw;
     // background: rgba(50, 50, 50, 0.85); /* fallback color if gradients are not supported */
@@ -223,6 +224,14 @@ header.d-header {
     top: 7.5vw;
     left: 3px;
     margin-left: -10px
+  }
+  .authorname {
+    font-size: 0.8em;
+    line-height: 1em;
+    padding-bottom: 1em;
+    margin-top: -2em;
+    padding-left: 1.5em;
+    color: rgba(200, 200, 200, 0.9);
   }
 }
 
@@ -350,6 +359,12 @@ body.on-home {
       &:nth-child(24){
         width: 11vw;
         height: 8.25vw;
+
+        font-size: 0.65em;
+
+        .content-wrap {
+          height: 3vw;
+        }
       }
     }
 
@@ -369,4 +384,3 @@ body.on-home {
 @keyframes home-blink {
   to {opacity: .0;}
 }
-
