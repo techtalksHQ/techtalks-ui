@@ -14,7 +14,7 @@ html body strong {
   font-weight: 500;
 }
 
-
+// header for all pages
 header.d-header {
   padding: 0;
   line-height: 30px;
@@ -216,4 +216,33 @@ body.on-home {
     max-width: 100vw;
     width: 100vw;
   }
+  .claim {
+    font-size: 3.5em;
+    margin-top: 30vh;
+    margin-left: 30vw;
+    color: white;
+    .animatedWords {
+      background-color: rgba(66, 66, 66, 0.75);
+      padding: 5px 10px;
+      .ani {
+        opacity: 0;
+        animation: home-type 0.2s;
+        animation-fill-mode:forwards;
+      }
+      .blinker {
+        -webkit-animation: home-blink 0.75s infinite;
+        -moz-animation: home-blink 0.75s infinite;
+        animation: home-blink 0.75s infinite;
+      }
+    }
+  }
 }
+
+@keyframes home-type{
+  to { opacity: 1;}
+}
+
+@keyframes home-blink {
+  to {opacity: .0;}
+}
+
