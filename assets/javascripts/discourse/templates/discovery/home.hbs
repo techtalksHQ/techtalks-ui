@@ -1,14 +1,16 @@
 {{#if hasTopTopics}}
-    <h1>Top Videos 1</h1>
-    <div class='contents'>
-        {{each topic in model.top.topics itemView="video-block-item"}}
+    <h2>Top Videos</h2>
+    <div class="top-videos clearfix">
+        <div class='contents'>
+            {{each topic in model.top.topics itemView="video-block-item"}}
+        </div>
     </div>
+    <hr />
 {{/if}}
 
-<hr />
-{{#if hasLatestTopics}}
-    <h1>Latest additions</h1>
+<h2>Latest additions</h2>
+<div class="latest-videos clearfix">
     <div class='contents'>
         {{each topic in model.latest.topics itemView="video-block-item"}}
     </div>
-{{/if}}
+</div>

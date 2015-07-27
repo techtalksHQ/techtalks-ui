@@ -185,28 +185,42 @@ header.d-header {
 
 
 .video-block-item {
-  background-size: contain;
+  background-size: cover;
   width: 22vw;
   height: 16.5vw;
   float: left;
   margin: 1vw;
-  background-color: black;
-  display: flex;
-  flex-direction: column-reverse;
   background-position: center;
   background-repeat: no-repeat;
+  font-weight: 200;
 
   position: relative;
+
+  .inner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    background-image: radial-gradient(ellipse , transparent 0%, black 100%);
+  }
 
   .content-wrap{
     padding: 1vw;
     height: 5vw;
-    background: rgba(122, 122, 122, 0.76)
+    // background: rgba(50, 50, 50, 0.85); /* fallback color if gradients are not supported */
+    background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
+    background-image:    -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); /* For Firefox (3.6 to 15) */
+    background-image:      -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); /* For old Opera (11.1 to 12.0) */ 
+    background-image:         linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); /* Standard syntax; must be last */
+    color: #eee;
   }
 
   .author {
     position: absolute;
-    top: 8vw;
+    top: 7.5vw;
     left: 3px;
     margin-left: -10px
   }
@@ -279,10 +293,77 @@ body.on-home {
       }
     }
   }
+
+  #list-area h2 {
+    margin-left: 20px;
+  }
+
+  .top-videos {
+    margin: 5vh 0 5vh 2vw;
+
+    .video-block-item {
+      margin: 0.5vw;
+      &:nth-child(1) {
+        width: 45.33vw;
+        height: 34vw;
+        margin-bottom: 0;
+
+        .content-wrap {
+          height: 10vw;
+          font-size: 2em;
+          line-height: 1.2em;
+        }
+
+        .author {
+          top: 16vw;
+          left: -0.5vw;
+          img {
+            width: 64px;
+            height: 64px;
+          }
+        }
+      }
+
+      &:nth-child(5):after {
+        display: table-cell;
+        clear: both;
+      }
+
+      &:nth-child(6),
+      &:nth-child(7),
+      &:nth-child(8),
+      &:nth-child(9),
+      &:nth-child(10),
+      &:nth-child(11),
+      &:nth-child(12),
+      &:nth-child(13),
+      &:nth-child(14),
+      &:nth-child(15),
+      &:nth-child(16),
+      &:nth-child(17),
+      &:nth-child(18),
+      &:nth-child(19),
+      &:nth-child(20),
+      &:nth-child(21),
+      &:nth-child(22),
+      &:nth-child(23),
+      &:nth-child(24){
+        width: 11vw;
+        height: 8.25vw;
+      }
+    }
+
+  }
 }
 
 @keyframes home-type{
   to { opacity: 1;}
+}
+
+
+@keyframes home-fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }
 
 @keyframes home-blink {
