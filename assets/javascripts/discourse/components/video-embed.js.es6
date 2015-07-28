@@ -41,7 +41,7 @@ export default Em.Component.extend({
   ],
 
   setup: {
-    'techOrder': ['html5', 'youtube', 'vimeo'],
+    'techOrder': ['html5', 'flash', 'youtube', 'vimeo'],
   },
 
   autoresize: true,
