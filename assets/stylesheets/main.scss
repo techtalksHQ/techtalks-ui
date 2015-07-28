@@ -414,3 +414,10 @@ body.on-home {
 @keyframes home-blink {
   to {opacity: .0;}
 }
+
+
+.videobox {
+  video {
+    max-height: none !important;
+  }
+}

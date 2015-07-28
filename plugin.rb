@@ -8,6 +8,8 @@ register_asset "javascripts/index.js.es6"
 
 # stylesheet
 register_asset "stylesheets/main.scss"
+register_asset "stylesheets/vendor/video-js.css"
+register_asset "stylesheets/vendor/videojs-sublime-skin.css"
 
 PLUGIN_NAME ||= "techtalks_ui".freeze
 

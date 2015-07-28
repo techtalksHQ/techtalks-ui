@@ -1,3 +1,5 @@
+
+import videojs from 'videojs';
 import StringBuffer from 'discourse/mixins/string-buffer';
 
 export default Discourse.View.extend(StringBuffer, {
