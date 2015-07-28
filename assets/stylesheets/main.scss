@@ -416,7 +416,7 @@ body.on-home {
 }
 
 
-.topic-above-post-stream-outlet.video-top {
+.video-top {
   background: black none repeat scroll 0% 0%;
 
   // move the videoblock outside of the wrapper-box
@@ -424,14 +424,31 @@ body.on-home {
   // widthout destroying any content flow
   // THIS IS HONESTLY STILL MAGIC TO ME, but it works:
   width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0px);
+  &:not(.docked){
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0px);
+  }
   // End MAGIC
 
   .videobox {
     margin: 0 auto;
     max-width: 900px;
+  }
+
+  &.docked .videobox {
+    .vjs-playing {
+      object,
+      video {
+        background: black;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        height: 60px;
+        width: 200px;
+      }
+    }
   }
 
   video {
