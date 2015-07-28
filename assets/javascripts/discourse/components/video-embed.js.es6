@@ -2,7 +2,8 @@
 // https://github.com/IvyApp/ivy-videojs/blob/master/addon/components/ivy-videojs.js
 
 import videojs from 'videojs';
-import vYt from 'discourse/plugins/techtalks-ui/vendor/videojs/videojs-youtube';
+import vYoutube from 'discourse/plugins/techtalks-ui/vendor/videojs/videojs-youtube';
+import vVimeo from 'discourse/plugins/techtalks-ui/vendor/videojs/videojs-vimeo';
 import StringBuffer from 'discourse/mixins/string-buffer';
 
 export default Em.Component.extend({
@@ -40,7 +41,7 @@ export default Em.Component.extend({
   ],
 
   setup: {
-    'techOrder': ['html5', 'youtube'],
+    'techOrder': ['html5', 'youtube', 'vimeo'],
   },
 
   autoresize: true,
