@@ -416,7 +416,24 @@ body.on-home {
 }
 
 
-.videobox {
+.topic-above-post-stream-outlet.video-top {
+  background: black none repeat scroll 0% 0%;
+
+  // move the videoblock outside of the wrapper-box
+  // and make sure it fits the entire screen width
+  // widthout destroying any content flow
+  // THIS IS HONESTLY STILL MAGIC TO ME, but it works:
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0px);
+  // End MAGIC
+
+  .videobox {
+    margin: 0 auto;
+    max-width: 900px;
+  }
+
   video {
     max-height: none !important;
   }

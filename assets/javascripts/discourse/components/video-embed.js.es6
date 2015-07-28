@@ -2,15 +2,18 @@
 // https://github.com/IvyApp/ivy-videojs/blob/master/addon/components/ivy-videojs.js
 
 import videojs from 'videojs';
+import StringBuffer from 'discourse/mixins/string-buffer';
 
 export default Em.Component.extend({
-  tagName: 'video',
+  tagName: 'div',
+  templateName: 'components/video-embed',
   // classNameBindings: [":animatedWords"],
   // attributeBindings: ["style"],
 
-  classNames: ['video-js'],
+  // classNames: ['video-js'],
 
   concatenatedProperties: ['playerAttributeBindings'],
+  naturalAspectRatio: 0.6525,
 
   playerEvents: {
     durationchange : 'durationChange',
@@ -35,7 +38,7 @@ export default Em.Component.extend({
     'volume'
   ],
 
-  autoresize: false,
+  autoresize: true,
 
   currentTimeDidChange: Ember.on('seeked', 'timeUpdate', function(player) {
     this.set('currentTime', player.currentTime());
@@ -52,10 +55,6 @@ export default Em.Component.extend({
     this.set('duration', player.duration());
   }),
 
-  naturalAspectRatio: Ember.computed(function() {
-    return this.get('naturalHeight') / this.get('naturalWidth');
-  }).property('naturalHeight', 'naturalWidth'),
-
   volumeDidChange: Ember.on('volumeChange', function(player) {
     this.set('muted', player.muted());
     this.set('volume', player.volume());
@@ -68,7 +67,7 @@ export default Em.Component.extend({
       var oldValue = method.call(player);
 
       if (oldValue !== newValue) {
-        method.call(player, newValue);
+        method.call(player, newValue, true);
       }
     }
   },
@@ -81,7 +80,7 @@ export default Em.Component.extend({
     if (!this.get('autoresize')) { return; }
 
     var naturalAspectRatio = this.get('naturalAspectRatio');
-    var parentWidth = Ember.$(player.el().parentNode).width();
+    var parentWidth = this.$().width();
 
     this.setProperties({
       currentHeight: parentWidth * naturalAspectRatio,
@@ -105,8 +104,10 @@ export default Em.Component.extend({
 
   _initPlayer: Ember.on('didInsertElement', function() {
     var self = this;
-    var element = this.get('element');
+    var element = this.$('video')[0];
     var options = this.get('setup') || {};
+
+    console.log(this, element, this.$('source'));
 
     videojs(element, options, function() {
       self._didInitPlayer(this);
