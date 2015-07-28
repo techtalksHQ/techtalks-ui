@@ -1,6 +1,11 @@
 <div class="videobox">
     {{#video-embed autoresize=true controls=true}}
-      <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
-      <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm" />
+
+     {{! Testing video selection: here is youtube}}
+      <source src="https://www.youtube.com/watch?v=hzf3hTUKk8U" type="video/youtube" />
+
+      {{! Testing video selection: here is mp4 and webm}}
+      {{! <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+      <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm" /> }}
     {{/video-embed}}
 </div>

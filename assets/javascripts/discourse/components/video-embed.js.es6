@@ -2,6 +2,7 @@
 // https://github.com/IvyApp/ivy-videojs/blob/master/addon/components/ivy-videojs.js
 
 import videojs from 'videojs';
+import vYt from 'discourse/plugins/techtalks-ui/vendor/videojs/videojs-youtube';
 import StringBuffer from 'discourse/mixins/string-buffer';
 
 export default Em.Component.extend({
@@ -38,6 +39,10 @@ export default Em.Component.extend({
     'volume'
   ],
 
+  setup: {
+    'techOrder': ['html5', 'youtube'],
+  },
+
   autoresize: true,
 
   currentTimeDidChange: Ember.on('seeked', 'timeUpdate', function(player) {
@@ -72,6 +77,15 @@ export default Em.Component.extend({
     }
   },
 
+  _recalcSize: function(){
+    const naturalAspectRatio = this.get('naturalAspectRatio'),
+          parentWidth = this.$().width();
+    return {
+      height: parentWidth * naturalAspectRatio,
+      width:  parentWidth
+    }
+  },
+
   _autoresizePlayer: function(player) {
     // Bail out early if the component is destroyed or in the process of being
     // destroyed. Setting a property on a destroyed object results in an error.
@@ -79,12 +93,11 @@ export default Em.Component.extend({
 
     if (!this.get('autoresize')) { return; }
 
-    var naturalAspectRatio = this.get('naturalAspectRatio');
-    var parentWidth = this.$().width();
+    const size = this._recalcSize();
 
     this.setProperties({
-      currentHeight: parentWidth * naturalAspectRatio,
-      currentWidth:  parentWidth
+      currentHeight: size.height,
+      currentWidth:  size.widht
     });
   },
 
@@ -103,11 +116,13 @@ export default Em.Component.extend({
   },
 
   _initPlayer: Ember.on('didInsertElement', function() {
-    var self = this;
-    var element = this.$('video')[0];
-    var options = this.get('setup') || {};
+    const self = this,
+          element = this.$('video')[0],
+          options = this.get('setup') || {},
+          sizes = this._recalcSize();
 
-    console.log(this, element, this.$('source'));
+    if(!options.width) options.width = sizes.width;
+    if(!options.height) options.height = sizes.height;
 
     videojs(element, options, function() {
       self._didInitPlayer(this);
