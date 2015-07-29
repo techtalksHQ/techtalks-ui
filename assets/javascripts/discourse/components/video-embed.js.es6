@@ -80,10 +80,20 @@ export default Em.Component.extend({
 
   _recalcSize: function(){
     const naturalAspectRatio = this.get('naturalAspectRatio'),
-          parentWidth = this.$().width();
+          parentWidth = this.$().width(),
+          parentHeight = parseFloat(this.$().css("max-height"));
+
+    var height = parentWidth * naturalAspectRatio,
+        width = parentWidth;
+
+    if (parentHeight && parentHeight != NaN && height > parentHeight){
+      height = parentHeight;
+      width = parentHeight / naturalAspectRatio;
+    }
+
     return {
-      height: parentWidth * naturalAspectRatio,
-      width:  parentWidth
+      height: height,
+      width:  width
     }
   },
 
@@ -98,7 +108,7 @@ export default Em.Component.extend({
 
     this.setProperties({
       currentHeight: size.height,
-      currentWidth:  size.widht
+      currentWidth:  size.width
     });
   },
 

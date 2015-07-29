@@ -432,8 +432,12 @@ body.on-home {
   // End MAGIC
 
   .videobox {
+    max-width: 1110px;
+    max-height: 60vh;
     margin: 0 auto;
-    max-width: 900px;
+    > div {
+      margin: 0 auto;
+    }
   }
 
   &.docked .videobox {
