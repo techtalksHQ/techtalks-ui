@@ -12,16 +12,49 @@
      {{! Testing video selection: here is youtube}}
      {{! <source src="https://www.youtube.com/watch?v=hzf3hTUKk8U" type="video/youtube" /> }}
 
+     <source src="https://www.youtube.com/watch?v=vbU2VXGjQj8" type="video/youtube" />
+
       {{! Testing video selection: here is mp4 and webm}}
-      <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
-      <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm" />
+      {{! <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+      <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm" /> }}
 {{/video-embed}}
 
 <div class="video-meta-wrap">
     <div class="video-meta">
-        <div class="video-title">
-            <h1>Title</h1>
+        <div class="title">
+          {{#if editingTopic}}
+            {{#if model.isPrivateMessage}}
+              <span class="private-message-glyph">{{fa-icon "envelope"}}</span>
+              {{autofocus-text-field id='edit-title' value=buffered.title maxLength=maxTitleLength}}
+            {{else}}
+              {{autofocus-text-field id='edit-title' value=buffered.title maxLength=maxTitleLength}}
+              <br>
+              {{category-chooser valueAttribute="id" value=buffered.category_id source=buffered.category_id}}
+            {{/if}}
+
+            {{plugin-outlet "edit-topic"}}
+
+            {{d-button action="finishedEditingTopic" class="btn-primary btn-small no-text submit-edit" icon="check"}}
+            {{d-button action="cancelEditingTopic" class="btn-small no-text cancel-edit" icon="times"}}
+          {{else}}
+            <h1>
+
+              {{#if model.details.loaded}}
+                {{topic-status topic=model}}
+                {{{model.fancyTitle}}}
+              {{/if}}
+
+              {{#if model.details.can_edit}}
+                <a href {{action "editTopic"}} class='edit-topic' title='{{i18n 'edit'}}'>{{fa-icon "pencil"}}</a>
+              {{/if}}
+            </h1>
+
+          {{/if}}
         </div>
+        {{plugin-outlet "topic-title"}}
+    </div>
+    <div class="categories">
+        {{topic-category topic=model}}
     </div>
     <div class="play-btn">
         <a href {{action "play-now"}}>

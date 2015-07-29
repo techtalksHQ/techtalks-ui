@@ -484,6 +484,15 @@ body.on-home {
           left: 0;
           width: 65vw;
           background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), transparent);
+
+          .title {
+            width: 60%;
+            line-height: 2em;
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            transform: translate(0, -50%);
+          }
         }
 
         &.play-btn {
