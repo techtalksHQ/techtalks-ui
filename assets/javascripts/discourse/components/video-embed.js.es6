@@ -30,16 +30,16 @@ export default Em.Component.extend({
   },
 
   playerAttributeBindings: [
-    'autoplay',
-    'controls',
-    'currentHeight:height',
-    'currentWidth:width',
-    'loop',
-    'muted',
-    'playbackRate',
+    // 'autoplay',
+    // 'controls',
+    // 'currentHeight:height',
+    // 'currentWidth:width',
+    // 'loop',
+    // 'muted',
+    // 'playbackRate',
     'poster',
-    'preload',
-    'volume'
+    // 'preload',
+    // 'volume'
   ],
 
   setup: {
