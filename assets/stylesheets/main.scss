@@ -437,17 +437,21 @@ body.on-home {
   }
 
   &.docked .videobox {
-    .vjs-playing {
-      object,
-      video {
-        background: black;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 9999;
-        height: 60px;
-        width: 200px;
-      }
+    iframe#videojs_vimeo_api,
+    //vimeo ATM doesn't report playing properly
+    // we put it on the top ALWAYS.
+    // all other following have proper reporting
+    // and we only show them, if we are playing
+    .vjs-playing object,
+    .vjs-playing iframe,
+    .vjs-playing video {
+      background: black;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      height: 60px;
+      width: 200px;
     }
   }
 
