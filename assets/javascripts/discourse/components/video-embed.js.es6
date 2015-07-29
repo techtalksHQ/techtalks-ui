@@ -9,10 +9,6 @@ import StringBuffer from 'discourse/mixins/string-buffer';
 export default Em.Component.extend({
   tagName: 'div',
   templateName: 'components/video-embed',
-  // classNameBindings: [":animatedWords"],
-  // attributeBindings: ["style"],
-
-  // classNames: ['video-js'],
 
   concatenatedProperties: ['playerAttributeBindings'],
   naturalAspectRatio: 0.6525,
