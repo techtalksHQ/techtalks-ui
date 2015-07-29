@@ -1,5 +1,5 @@
 
-{{#video-embed class="videobox" autoresize=true controls=true}}
+{{#video-embed class="videobox" autoresize=true controls=true player-waiting='player-waiting' player-play='player-play' player-pause='player-pause' player-seeking='player-seeking' player-seeked='player-seeked' player-ended='player-ended' ready='player-ready'}}
 
       {{! <source src="http://05d2db1380b6504cc981-8cbed8cf7e3a131cd8f1c3e383d10041.r93.cf2.rackcdn.com/djangocon-2009/22_a-socio-political-analysis-of-open-source-community.ogv" type="video/ogg"/>}}
 
@@ -16,3 +16,19 @@
       <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
       <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm" />
 {{/video-embed}}
+
+<div class="video-meta-wrap">
+    <div class="video-meta">
+        <div class="video-title">
+            <h1>Title</h1>
+        </div>
+    </div>
+    <div class="play-btn">
+        <a href {{action "play-now"}}>
+            {{fa-icon "play" modifier="4x"}}
+        </a>
+    </div>
+    <div class="video-actions">
+        <span>fa</span>
+    </div>
+</div>

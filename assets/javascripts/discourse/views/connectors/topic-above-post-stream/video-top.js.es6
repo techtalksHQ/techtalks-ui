@@ -1,6 +1,6 @@
-export default Ember.View.extend({
-  classNameBindings: [":video-top", "docked"],
 
+export default Ember.View.extend({
+  classNameBindings: [":video-top", "controller.playerState", "docked"],
   _inserted: function() {
     Discourse.URL.appEvents.on("topic:scrolled", this, '_dock');
   }.on("didInsertElement"),

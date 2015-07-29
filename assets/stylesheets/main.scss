@@ -424,7 +424,7 @@ body.on-home {
   // widthout destroying any content flow
   // THIS IS HONESTLY STILL MAGIC TO ME, but it works:
   width: 100vw;
-  &:not(.docked){
+  &:not(.docked) {
     position: relative;
     left: 50%;
     transform: translate(-50%, 0px);
@@ -440,26 +440,86 @@ body.on-home {
     }
   }
 
-  &.docked .videobox {
-    iframe#videojs_vimeo_api,
-    //vimeo ATM doesn't report playing properly
-    // we put it on the top ALWAYS.
-    // all other following have proper reporting
-    // and we only show them, if we are playing
-    .vjs-playing object,
-    .vjs-playing iframe,
-    .vjs-playing video {
-      background: black;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 9999;
-      height: 60px;
-      width: 200px;
+  &.docked {
+    .videobox {
+      iframe#videojs_vimeo_api,
+      //vimeo ATM doesn't report playing properly
+      // we put it on the top ALWAYS.
+      // all other following have proper reporting
+      // and we only show them, if we are playing
+      .vjs-playing object,
+      .vjs-playing iframe,
+      .vjs-playing video {
+        background: black;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        height: 60px;
+        width: 200px;
+      }
+    }
+    .video-meta-wrap {
+      position: relative;
     }
   }
 
   video {
     max-height: none !important;
+  }
+
+  &:not(.player-play) {
+    // title ontop of video
+
+    .video-meta-wrap {
+      height: 100%;
+      > div {
+        position: absolute;
+        color: white;
+        top: 0;
+        z-index: 9990;
+
+        &.video-meta {
+          height: 100%;
+          left: 0;
+          width: 65vw;
+          background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), transparent);
+        }
+
+        &.play-btn {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+          .fa-play {
+            border: 5px solid;
+            padding: 0.45em;
+            border-radius: 50%;
+            width: 1em;
+            text-align: center;
+          }
+        }
+
+        &.video-actions {
+          height: 100%;
+          right: 0;
+          width: 25vw;
+          background-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), transparent);
+        }
+      }
+    }
+  }
+
+  &.player-play {
+    .video-meta-wrap {
+      background: white;
+      > div {
+        animation: 1s ease-in-out all;
+      }
+      .play-btn {
+        display: none;
+      }
+    }
   }
 }

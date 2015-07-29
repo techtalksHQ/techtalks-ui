@@ -4,7 +4,6 @@
 import videojs from 'videojs';
 import vYoutube from 'discourse/plugins/techtalks-ui/vendor/videojs/videojs-youtube';
 import vVimeo from 'discourse/plugins/techtalks-ui/vendor/videojs/videojs-vimeo';
-import StringBuffer from 'discourse/mixins/string-buffer';
 
 export default Em.Component.extend({
   tagName: 'div',
@@ -14,13 +13,20 @@ export default Em.Component.extend({
   naturalAspectRatio: 0.6525,
 
   playerEvents: {
-    durationchange : 'durationChange',
-    loadedmetadata : 'loadedMetadata',
-    play           : 'play',
-    resize         : 'resize',
-    seeked         : 'seeked',
-    timeupdate     : 'timeUpdate',
-    volumechange   : 'volumeChange'
+    // player updates
+    durationchange   : 'durationChange',
+    loadedmetadata   : 'loadedMetadata',
+    fullscreenchange : 'durationChange',
+    timeupdate       : 'timeUpdate',
+    volumechange     : 'volumeChange',
+
+    // player states
+    waiting          : 'waiting',
+    play             : 'play',
+    pause            : 'pause',
+    seekin           : 'seeking',
+    seeked           : 'seeked',
+    ended            : 'ended'
   },
 
   playerAttributeBindings: [
@@ -114,7 +120,7 @@ export default Em.Component.extend({
     this._setupAutoresize(player);
 
     Ember.run(this, function() {
-      this.sendAction('ready');
+      this.sendAction('ready', player);
     });
 
     this.one('willDestroyElement', function() {
@@ -210,6 +216,7 @@ export default Em.Component.extend({
   _setupPlayerEventHandler: function(player, event, eventName) {
     var handlerFunction = Ember.run.bind(this, function(e) {
       this.trigger(eventName, player, e);
+      this.sendAction('player-' + eventName, player, e);
     });
 
     // Bind an event handler to the player. We don't need to worry about
