@@ -1,67 +1,111 @@
 
-{{#video-embed class="videobox" autoresize=true controls=true player-waiting='player-waiting' player-play='player-play' player-pause='player-pause' player-seeking='player-seeking' player-seeked='player-seeked' player-ended='player-ended' ready='player-ready'}}
+<div class="video-wrap">
+    {{#video-embed class="videobox" autoresize=true controls=true player-waiting='player-waiting' player-play='player-play' player-pause='player-pause' player-seeking='player-seeking' player-seeked='player-seeked' player-ended='player-ended' ready='player-ready'}}
 
-      {{! <source src="http://05d2db1380b6504cc981-8cbed8cf7e3a131cd8f1c3e383d10041.r93.cf2.rackcdn.com/djangocon-2009/22_a-socio-political-analysis-of-open-source-community.ogv" type="video/ogg"/>}}
+          {{! <source src="http://05d2db1380b6504cc981-8cbed8cf7e3a131cd8f1c3e383d10041.r93.cf2.rackcdn.com/djangocon-2009/22_a-socio-political-analysis-of-open-source-community.ogv" type="video/ogg"/>}}
 
-     {{! <source src="http://05d2db1380b6504cc981-8cbed8cf7e3a131cd8f1c3e383d10041.r93.cf2.rackcdn.com/djangocon-eu-2011/0_3-cmses-in-45-minutes.m4v" type="video/mp4" /> }}
+         {{! <source src="http://05d2db1380b6504cc981-8cbed8cf7e3a131cd8f1c3e383d10041.r93.cf2.rackcdn.com/djangocon-eu-2011/0_3-cmses-in-45-minutes.m4v" type="video/mp4" /> }}
 
-     {{!<source src="http://05d2db1380b6504cc981-8cbed8cf7e3a131cd8f1c3e383d10041.r93.cf2.rackcdn.com/djangocon-2010/41_alice-in-performanceland-down-the-rabbit-hole-with-frank-wiles.flv" type="video/flv" /> }}
+         {{!<source src="http://05d2db1380b6504cc981-8cbed8cf7e3a131cd8f1c3e383d10041.r93.cf2.rackcdn.com/djangocon-2010/41_alice-in-performanceland-down-the-rabbit-hole-with-frank-wiles.flv" type="video/flv" /> }}
 
-     {{! <source src="https://vimeo.com/1093745" type="video/vimeo" /> }}
+         {{! <source src="https://vimeo.com/1093745" type="video/vimeo" /> }}
 
-     {{! Testing video selection: here is youtube}}
-     {{! <source src="https://www.youtube.com/watch?v=hzf3hTUKk8U" type="video/youtube" /> }}
+         {{! Testing video selection: here is youtube}}
+         {{! <source src="https://www.youtube.com/watch?v=hzf3hTUKk8U" type="video/youtube" /> }}
 
-     <source src="https://www.youtube.com/watch?v=vbU2VXGjQj8" type="video/youtube" />
+         <source src="https://www.youtube.com/watch?v=vbU2VXGjQj8" type="video/youtube" />
 
-      {{! Testing video selection: here is mp4 and webm}}
-      {{! <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
-      <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm" /> }}
-{{/video-embed}}
+          {{! Testing video selection: here is mp4 and webm}}
+          {{! <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+          <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm" /> }}
+    {{/video-embed}}
 
-<div class="video-meta-wrap">
-    <div class="video-meta">
-        <div class="title">
-          {{#if editingTopic}}
-            {{#if model.isPrivateMessage}}
-              <span class="private-message-glyph">{{fa-icon "envelope"}}</span>
-              {{autofocus-text-field id='edit-title' value=buffered.title maxLength=maxTitleLength}}
-            {{else}}
-              {{autofocus-text-field id='edit-title' value=buffered.title maxLength=maxTitleLength}}
-              <br>
-              {{category-chooser valueAttribute="id" value=buffered.category_id source=buffered.category_id}}
-            {{/if}}
+    <div class="video-meta-overlay">
+        <div class="video-meta-inner">
+            <div class="video-meta">
+                <div class="title">
+                  {{#if editingTopic}}
+                    {{#if model.isPrivateMessage}}
+                      <span class="private-message-glyph">{{fa-icon "envelope"}}</span>
+                      {{autofocus-text-field id='edit-title' value=buffered.title maxLength=maxTitleLength}}
+                    {{else}}
+                      {{autofocus-text-field id='edit-title' value=buffered.title maxLength=maxTitleLength}}
+                      <br>
+                      {{category-chooser valueAttribute="id" value=buffered.category_id source=buffered.category_id}}
+                    {{/if}}
 
-            {{plugin-outlet "edit-topic"}}
+                    {{plugin-outlet "edit-topic"}}
 
-            {{d-button action="finishedEditingTopic" class="btn-primary btn-small no-text submit-edit" icon="check"}}
-            {{d-button action="cancelEditingTopic" class="btn-small no-text cancel-edit" icon="times"}}
-          {{else}}
-            <h1>
+                    {{d-button action="finishedEditingTopic" class="btn-primary btn-small no-text submit-edit" icon="check"}}
+                    {{d-button action="cancelEditingTopic" class="btn-small no-text cancel-edit" icon="times"}}
+                  {{else}}
+                    <h1>
 
-              {{#if model.details.loaded}}
-                {{topic-status topic=model}}
-                {{{model.fancyTitle}}}
-              {{/if}}
+                      {{#if model.details.loaded}}
+                        {{topic-status topic=model}}
+                        {{{model.fancyTitle}}}
+                      {{/if}}
 
-              {{#if model.details.can_edit}}
-                <a href {{action "editTopic"}} class='edit-topic' title='{{i18n 'edit'}}'>{{fa-icon "pencil"}}</a>
-              {{/if}}
-            </h1>
+                      {{#if model.details.can_edit}}
+                        <a href {{action "editTopic"}} class='edit-topic' title='{{i18n 'edit'}}'>{{fa-icon "pencil"}}</a>
+                      {{/if}}
+                    </h1>
 
-          {{/if}}
+                  {{/if}}
+                </div>
+                {{plugin-outlet "topic-title"}}
+            </div>
+
+            <div class="play-btn">
+                <a href {{action "play-now"}}>
+                    {{fa-icon "play" modifier="4x"}}
+                </a>
+            </div>
+            <div class="video-actions-wrap">
+                <div class="video-actions">
+                    {{fa-icon "bookmark-o" modifier="3x"}}
+                    {{fa-icon "thumbs-o-up" modifier="3x"}}
+                    {{fa-icon "share-alt" modifier="3x"}}
+                </div>
+            </div>
         </div>
-        {{plugin-outlet "topic-title"}}
     </div>
-    <div class="categories">
-        {{topic-category topic=model}}
-    </div>
-    <div class="play-btn">
-        <a href {{action "play-now"}}>
-            {{fa-icon "play" modifier="4x"}}
-        </a>
-    </div>
-    <div class="video-actions">
-        <span>fa</span>
+</div>
+
+<div class="video-meta-under">
+    <div class="video-meta-inner">
+        <div class="video-meta">
+            <div class="title">
+              {{#if editingTopic}}
+                {{#if model.isPrivateMessage}}
+                  <span class="private-message-glyph">{{fa-icon "envelope"}}</span>
+                  {{autofocus-text-field id='edit-title' value=buffered.title maxLength=maxTitleLength}}
+                {{else}}
+                  {{autofocus-text-field id='edit-title' value=buffered.title maxLength=maxTitleLength}}
+                  <br>
+                  {{category-chooser valueAttribute="id" value=buffered.category_id source=buffered.category_id}}
+                {{/if}}
+
+                {{plugin-outlet "edit-topic"}}
+
+                {{d-button action="finishedEditingTopic" class="btn-primary btn-small no-text submit-edit" icon="check"}}
+                {{d-button action="cancelEditingTopic" class="btn-small no-text cancel-edit" icon="times"}}
+              {{else}}
+                <h1>
+
+                  {{#if model.details.loaded}}
+                    {{topic-status topic=model}}
+                    {{{model.fancyTitle}}}
+                  {{/if}}
+
+                  {{#if model.details.can_edit}}
+                    <a href {{action "editTopic"}} class='edit-topic' title='{{i18n 'edit'}}'>{{fa-icon "pencil"}}</a>
+                  {{/if}}
+                </h1>
+
+              {{/if}}
+            </div>
+            {{plugin-outlet "topic-title"}}
+        </div>
     </div>
 </div>

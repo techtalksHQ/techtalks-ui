@@ -403,17 +403,22 @@ body.on-home {
 
 
 .video-top {
-  background: black none repeat scroll 0% 0%;
+  .video-wrap {
+    background: black none repeat scroll 0% 0%;
+
+    width: 100vw;
+  }
 
   // move the videoblock outside of the wrapper-box
   // and make sure it fits the entire screen width
   // widthout destroying any content flow
   // THIS IS HONESTLY STILL MAGIC TO ME, but it works:
-  width: 100vw;
   &:not(.docked) {
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0px);
+    .video-wrap {
+      position: relative;
+      left: 50%;
+      transform: translate(-50%, 0px);
+    }
   }
   // End MAGIC
 
@@ -454,15 +459,16 @@ body.on-home {
     max-height: none !important;
   }
 
-  &:not(.player-play):not(.player-waiting):not(.animating-out):not(.animating-out),
-  &.player-play.animating-out,
-  &.player-waiting.animating-out,
-  &.player-pause.animating-in {
-    // title ontop of video
+  // &:not(.player-play):not(.player-waiting):not(.transitioning):not(.transitioning),
+  // &.player-play.transitioning,
+  // &.player-waiting.transitioning,
+  // &.player-pause.transitioning {
+  //   // title ontop of video
 
-    .video-meta-wrap {
-      height: 100%;
-      opacity: 0;
+  .video-meta-overlay {
+    height: 100%;
+    opacity: 0;
+    .video-meta-inner {
       > div {
         position: absolute;
         color: white;
@@ -473,7 +479,7 @@ body.on-home {
           height: 100%;
           left: 0;
           width: 65vw;
-          background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), transparent);
+          background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6), transparent);
 
           .title {
             width: 38vw;
@@ -500,27 +506,62 @@ body.on-home {
           }
         }
 
-        &.video-actions {
+        &.video-actions-wrap {
           height: 100%;
+          background-image: linear-gradient(to right, transparent, rgba(0,0,0,0.9), #000, #000);
+          width: 40vw;
           right: 0;
-          width: 25vw;
-          background-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), transparent);
+          text-align: center;
+          .video-actions {
+            width: 38vw;
+            line-height: 2.25em;
+            position: absolute;
+            top: 50%;
+            left: 8vw;
+            transform: translate(0, -50%);
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            align-items: center;
+            .fa {
+              text-align: center;
+              border: 2px solid;
+              padding: 5px;
+              border-radius: 50%;
+              width: 1em;
+              margin: 5px;
+            }
+          }
         }
       }
     }
   }
+  // }
 
-  &:not(.player-play):not(.player-waiting):not(.animating-out):not(.animating-out),
-  &.player-pause.animating-in {
-    .video-meta-wrap {
+  // in general
+  .video-meta-under {
+    background: white;
+
+    .video-meta-inner {
+      max-width: 1110px;
+      margin: 0px auto;
+      padding: 20px 0px;
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &:not(.player-play):not(.player-waiting):not(.transitioning):not(.transitioning),
+  &.player-pause.transitioning {
+    .video-meta-overlay {
       opacity: 0;
       animation: video-fadeIn 1.5s 0.25s;
       animation-fill-mode: forwards;
     }
   }
 
-  &.player-pause.animating-out {
-    .video-meta-wrap {
+  &.player-pause.transitioning {
+    .video-meta-under {
       opacity: 1;
       animation: video-fadeOut .5s;
       animation-fill-mode: forwards;
@@ -529,21 +570,23 @@ body.on-home {
 
   &.player-play,
   &.player-waiting {
-    &.animating-out {
-      .video-meta-wrap {
+
+    // animations
+    &.transitioning {
+      .video-meta-overlay {
         opacity: 1;
         animation: video-fadeOut .5s;
         animation-fill-mode: forwards;
       }
     }
-
-
-    .video-meta-wrap {
-      background: white;
+    &:not(.transitioning) {
+      .video-meta-overlay {
+        display: none;
+      }
     }
 
-    &.animating-in {
-      .video-meta-wrap {
+    &.transitioning {
+      .video-meta-under {
         opacity: 0;
         animation: video-fadeIn 1s;
         animation-fill-mode: forwards;
@@ -552,9 +595,6 @@ body.on-home {
         }
       }
     }
-
-
-
     .play-btn {
       display: none;
     }
