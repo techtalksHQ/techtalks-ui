@@ -401,20 +401,6 @@ body.on-home {
   }
 }
 
-@keyframes home-type{
-  to { opacity: 1;}
-}
-
-
-@keyframes home-fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
-}
-
-@keyframes home-blink {
-  to {opacity: .0;}
-}
-
 
 .video-top {
   background: black none repeat scroll 0% 0%;
@@ -468,11 +454,15 @@ body.on-home {
     max-height: none !important;
   }
 
-  &:not(.player-play) {
+  &:not(.player-play):not(.player-waiting):not(.animating-out):not(.animating-out),
+  &.player-play.animating-out,
+  &.player-waiting.animating-out,
+  &.player-pause.animating-in {
     // title ontop of video
 
     .video-meta-wrap {
       height: 100%;
+      opacity: 0;
       > div {
         position: absolute;
         color: white;
@@ -486,11 +476,11 @@ body.on-home {
           background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), transparent);
 
           .title {
-            width: 60%;
-            line-height: 2em;
+            width: 38vw;
+            line-height: 2.25em;
             position: absolute;
             top: 50%;
-            left: 5%;
+            left: 8vw;
             transform: translate(0, -50%);
           }
         }
@@ -520,15 +510,78 @@ body.on-home {
     }
   }
 
-  &.player-play {
+  &:not(.player-play):not(.player-waiting):not(.animating-out):not(.animating-out),
+  &.player-pause.animating-in {
+    .video-meta-wrap {
+      opacity: 0;
+      animation: video-fadeIn 1.5s 0.25s;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  &.player-pause.animating-out {
+    .video-meta-wrap {
+      opacity: 1;
+      animation: video-fadeOut .5s;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  &.player-play,
+  &.player-waiting {
+    &.animating-out {
+      .video-meta-wrap {
+        opacity: 1;
+        animation: video-fadeOut .5s;
+        animation-fill-mode: forwards;
+      }
+    }
+
+
     .video-meta-wrap {
       background: white;
-      > div {
-        animation: 1s ease-in-out all;
+    }
+
+    &.animating-in {
+      .video-meta-wrap {
+        opacity: 0;
+        animation: video-fadeIn 1s;
+        animation-fill-mode: forwards;
+        > div {
+
+        }
       }
-      .play-btn {
-        display: none;
-      }
+    }
+
+
+
+    .play-btn {
+      display: none;
     }
   }
 }
+
+
+
+// animations\
+@keyframes home-type{
+  to { opacity: 1;}
+}
+
+
+@keyframes video-fadeOut{
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes video-fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+
+
+@keyframes home-blink {
+  to {opacity: .0;}
+}
+
