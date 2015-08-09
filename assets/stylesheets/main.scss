@@ -405,7 +405,6 @@ body.on-home {
 .video-top {
   .video-wrap {
     background: black none repeat scroll 0% 0%;
-
     width: 100vw;
   }
 
@@ -450,7 +449,7 @@ body.on-home {
         width: 200px;
       }
     }
-    .video-meta-wrap {
+    .video-meta-overlay {
       position: relative;
     }
   }
