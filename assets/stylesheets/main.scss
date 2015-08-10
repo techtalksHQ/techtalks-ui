@@ -406,6 +406,11 @@ body.on-home {
   display: none;
 }
 
+#post_1 {
+  .topic-avatar, .topic-meta-data {
+    display: none;
+  }
+}
 
 .video-top {
   .video-wrap {
