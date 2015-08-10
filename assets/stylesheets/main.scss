@@ -471,11 +471,11 @@ body.on-home {
       > div {
         position: absolute;
         color: white;
-        top: 0;
         z-index: 9990;
 
         &.video-meta {
           height: 100%;
+          top: 0;
           left: 0;
           width: 65vw;
           background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6), transparent);
@@ -510,6 +510,7 @@ body.on-home {
           background-image: linear-gradient(to right, transparent, rgba(0,0,0,0.9), #000, #000);
           width: 40vw;
           right: 0;
+          top: 0;
           text-align: center;
           .video-actions {
             width: 38vw;
@@ -531,6 +532,11 @@ body.on-home {
               margin: 5px;
             }
           }
+        }
+
+        &.speakers {
+          bottom: -16px;
+          left: 15vw;
         }
       }
     }

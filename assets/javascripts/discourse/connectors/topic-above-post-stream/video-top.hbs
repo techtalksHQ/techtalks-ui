@@ -24,34 +24,15 @@
         <div class="video-meta-inner">
             <div class="video-meta">
                 <div class="title">
-                  {{#if editingTopic}}
-                    {{#if model.isPrivateMessage}}
-                      <span class="private-message-glyph">{{fa-icon "envelope"}}</span>
-                      {{autofocus-text-field id='edit-title' value=buffered.title maxLength=maxTitleLength}}
-                    {{else}}
-                      {{autofocus-text-field id='edit-title' value=buffered.title maxLength=maxTitleLength}}
-                      <br>
-                      {{category-chooser valueAttribute="id" value=buffered.category_id source=buffered.category_id}}
-                    {{/if}}
-
-                    {{plugin-outlet "edit-topic"}}
-
-                    {{d-button action="finishedEditingTopic" class="btn-primary btn-small no-text submit-edit" icon="check"}}
-                    {{d-button action="cancelEditingTopic" class="btn-small no-text cancel-edit" icon="times"}}
-                  {{else}}
+                    <h2>Clay Shirky</h2>
                     <h1>
-
                       {{#if model.details.loaded}}
-                        {{topic-status topic=model}}
                         {{{model.fancyTitle}}}
                       {{/if}}
-
-                      {{#if model.details.can_edit}}
-                        <a href {{action "editTopic"}} class='edit-topic' title='{{i18n 'edit'}}'>{{fa-icon "pencil"}}</a>
-                      {{/if}}
                     </h1>
-
-                  {{/if}}
+                    <p class="likes">
+                     {{fa-icon "thumbs-o-up" modifier="2x"}} {{model.like_count}}
+                    </p>
                 </div>
                 {{plugin-outlet "topic-title"}}
             </div>
@@ -63,10 +44,18 @@
             </div>
             <div class="video-actions-wrap">
                 <div class="video-actions">
-                    {{fa-icon "bookmark-o" modifier="3x"}}
+                    {{#if model.details.bookmarked}}
+                        {{fa-icon "bookmark" modifier="3x"}}
+                    {{else}}
+                        {{fa-icon "bookmark-o" modifier="3x"}}
+                    {{/if}}
+
                     {{fa-icon "thumbs-o-up" modifier="3x"}}
                     {{fa-icon "share-alt" modifier="3x"}}
                 </div>
+            </div>
+            <div class="speakers">
+                {{avatar model.details.created_by imageSize="huge"}}
             </div>
         </div>
     </div>
