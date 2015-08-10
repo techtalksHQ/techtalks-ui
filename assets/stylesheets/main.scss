@@ -401,6 +401,11 @@ body.on-home {
   }
 }
 
+// TODO: this is probably too rigid, but that's how we do it for now:
+#topic-title {
+  display: none;
+}
+
 
 .video-top {
   .video-wrap {
@@ -536,7 +541,18 @@ body.on-home {
 
         &.speakers {
           bottom: -16px;
-          left: 15vw;
+          left: 10vw;
+        }
+
+        &.meta-details {
+          bottom: -50px;
+          left: 10vw;
+          display: flex;
+          align-items: center;
+          width: 70vw;
+          .categories {
+            flex-grow: 2;
+          }
         }
       }
     }
@@ -556,11 +572,17 @@ body.on-home {
     }
   }
 
-  &:not(.player-play):not(.player-waiting):not(.transitioning):not(.transitioning),
+  &:not(.player-play):not(.player-waiting):not(.transitioning),
   &.player-pause.transitioning {
     .video-meta-overlay {
       opacity: 0;
       animation: video-fadeIn 1.5s 0.25s;
+      animation-fill-mode: forwards;
+    }
+
+    .video-meta-under {
+      opacity: 0;
+      animation: video-fadeOut .5s;
       animation-fill-mode: forwards;
     }
   }

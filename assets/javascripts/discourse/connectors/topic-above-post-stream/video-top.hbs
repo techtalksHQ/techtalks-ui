@@ -57,6 +57,16 @@
             <div class="speakers">
                 {{avatar model.details.created_by imageSize="huge"}}
             </div>
+            <div class="meta-details">
+                <div class="categories">
+                    {{#if model.category.parentCategory}}
+                        {{bound-category-link model.category.parentCategory}}
+                    {{/if}}
+                    {{bound-category-link model.category hideParent=true}}
+                </div>
+
+                <a class='post-date' {{bind-attr href="shareUrl" data-share-url="shareUrl" data-post-number="post_number"}}>posted {{age-with-tooltip model.created_at}}</a>
+            </div>
         </div>
     </div>
 </div>
