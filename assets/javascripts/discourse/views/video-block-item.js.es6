@@ -21,6 +21,10 @@ export default Discourse.View.extend({
     return 'border-color: #' + this.get("topic.category.color");
   }.property('topic.category.color'),
 
+  iconColor: function(){
+    return 'color: #' + this.get("topic.category.color");
+  }.property('topic.category.color'),
+
   backdrop: function(){
     return 'background-image: url(' + (this.get('topic.image_url') || '/plugins/techtalks-ui/thumbs/' + parseInt(Math.random() * 27) + '.jpg') + ')';
   }.property('topic.image_url'),
