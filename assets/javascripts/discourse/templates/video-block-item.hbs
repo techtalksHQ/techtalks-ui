@@ -1,0 +1,17 @@
+
+<div class="inner-thumbnail" style="{{unbound view.backdrop}}">
+</div>
+<div class="text">
+    <div class="inner" style="{{unbound view.catColor}}">
+        <a href="{{view.author.user.path}}" data-user-card="{{view.author.user.username}}" class="{{author.extras}}">{{avatar view.author usernamePath="user.username" imageSize="medium"}}</a>
+        <h3>{{topic.title}}</h3>
+        <span class="time">52:36</span>
+        <span class="author">{{view.author.user.username}}</span>
+    </div>
+    <div class="meta-info">
+        <span class="fa fa-thumbs-o-up"></span>
+        <span>{{topic.like_count}}</span>
+        <span class="fa fa-comment"></span>
+        <span>{{topic.post_count}}</span>
+    </div>
+</div>

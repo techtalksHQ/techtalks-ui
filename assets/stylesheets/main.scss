@@ -193,53 +193,89 @@ header.d-header {
 
 
 .video-block-item {
-  background-size: cover;
-  width: 22vw;
-  height: 16.5vw;
-  float: left;
-  margin: 1vw;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-weight: 200;
-
+  width: 20vw;
+  margin: 3px;
+  border: 1px solid #eee;
+  overflow: hidden;
   position: relative;
+  flex-direction: column;
+  display: inline-flex;
+  align-items: center;
+  float: left;
 
-  .inner {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column-reverse;
-    background-image: radial-gradient(ellipse , transparent 0%, black 100%);
+  .inner-thumbnail {
+    width: 20vw;
+    height: 13vw;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    margin: 3px 3px 0;
   }
 
-  .content-wrap{
+  &:hover .inner-thumbnail {
+    filter: saturate(2.25);
+    transform: scale(1.075, 1.075);
+    transition: all 0.2s ease;
+  }
+
+
+  h3 {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0;
+    height: 36px;
     overflow: hidden;
-    padding: 1vw;
-    height: 5vw;
-    // background: rgba(50, 50, 50, 0.85); /* fallback color if gradients are not supported */
-    background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
-    background-image:    -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); /* For Firefox (3.6 to 15) */
-    background-image:      -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); /* For old Opera (11.1 to 12.0) */ 
-    background-image:         linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); /* Standard syntax; must be last */
-    color: #eee;
+  }
+
+  .text {
+    width: 100%;
+    color: #222;
+    z-index: 99990;
+  }
+
+  .video-box .text {
+    transform: scale(1.075, 1.075);
+    transition: all 0.2s ease;
+  }
+
+  .text .inner {
+    padding: 10px 5px 5px;
+    height: 4.5vw;
+    background: white;
+    border-width: 0 0 0 15px;
+    border-style: solid;
+  }
+
+
+  .text .inner img {
+    float: left;
+    border-radius: 50%;
+    margin-top: 5px;
+    border: 1px solid #999;
+    /*margin-left: -5px;*/
+    margin-right: 3px;
+    /*display: none;*/
+  }
+
+  .meta-info {
+    position: absolute;
+    bottom: 0.5em;
+    right: 10px;
+    font-size: 0.72em;
+    color: #999;;
+    /*display: none;*/
+  }
+
+  .time {
+    color: #999;
+    font-size: 10px;
+    margin-right: 0.25em;
   }
 
   .author {
-    position: absolute;
-    top: 7.5vw;
-    left: 3px;
-    margin-left: -10px
-  }
-  .authorname {
-    font-size: 0.8em;
-    line-height: 1em;
-    padding-bottom: 1em;
-    margin-top: -2em;
-    padding-left: 1.5em;
-    color: rgba(200, 200, 200, 0.9);
+    color: #999;
+    font-size: 10px;
   }
 }
 
@@ -327,27 +363,22 @@ body.on-home {
 
     .video-block-item {
       margin: 0.5vw;
+
       &:nth-child(1) {
         width: 45.33vw;
-        height: 34vw;
         margin-bottom: 0;
 
-        .content-wrap {
-          height: 10vw;
-          font-size: 2em;
-          line-height: 1.2em;
+        .inner-thumbnail {
+          width: 45vw;
+          height: 30vw;
+          background-size: contain;
+          background-position: center;
+          z-index: -1;
         }
-
-        .author {
-          top: 16vw;
-          left: -0.5vw;
-          img {
-            width: 64px;
-            height: 64px;
-          }
+        .text .inner{
+          height: 7.5vw;
         }
       }
-
       &:nth-child(5):after {
         display: table-cell;
         clear: both;

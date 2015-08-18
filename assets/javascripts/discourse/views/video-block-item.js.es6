@@ -1,12 +1,12 @@
 
 import videojs from 'videojs';
-import StringBuffer from 'discourse/mixins/string-buffer';
+// import StringBuffer from 'discourse/mixins/string-buffer';
 
-export default Discourse.View.extend(StringBuffer, {
+export default Discourse.View.extend({
   tagName: 'a',
-  rawTemplate: 'video-block-item.raw',
+  templateName: 'video-block-item',
   classNames: ["video-block-item"],
-  attributeBindings: ["style", "href"],
+  attributeBindings: ["href"],
   topic: Em.computed.alias("content"),
 
   href: function(){
@@ -17,7 +17,11 @@ export default Discourse.View.extend(StringBuffer, {
     return this.get("topic.posters")[0];
   }.property('topic.posters'),
 
-  style: function(){
+  catColor: function(){
+    return 'border-color: #' + this.get("topic.category.color");
+  }.property('topic.category.color'),
+
+  backdrop: function(){
     return 'background-image: url(' + (this.get('topic.image_url') || '/plugins/techtalks-ui/thumbs/' + parseInt(Math.random() * 27) + '.jpg') + ')';
   }.property('topic.image_url'),
 
