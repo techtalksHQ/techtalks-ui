@@ -501,12 +501,6 @@ body.on-home {
     max-height: none !important;
   }
 
-  // &:not(.player-play):not(.player-waiting):not(.transitioning):not(.transitioning),
-  // &.player-play.transitioning,
-  // &.player-waiting.transitioning,
-  // &.player-pause.transitioning {
-  //   // title ontop of video
-
   .video-meta-overlay {
     height: 100%;
     opacity: 0;
@@ -641,6 +635,7 @@ body.on-home {
   }
 
   &:not(.player-play):not(.player-waiting):not(.transitioning),
+  &.player-ended.transitioning,
   &.player-pause.transitioning {
     .video-meta-overlay {
       opacity: 0;
@@ -656,6 +651,7 @@ body.on-home {
     }
   }
 
+  &.player-ended.transitioning,
   &.player-pause.transitioning {
     .video-meta-under {
       opacity: 1;
