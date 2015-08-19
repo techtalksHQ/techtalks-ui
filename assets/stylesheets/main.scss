@@ -78,14 +78,16 @@ header.d-header {
       padding-top: 9px;
       .extra-info-wrapper {
         line-height: 20px;
+        max-width: 60vw;
       }
     }
 
     .icons {
+      margin: 0;
+      white-space: nowrap;
       &.notifications {
         position: relative;
-        padding-top: 0px;
-        margin-top: 15px;
+        padding-top: 15px;
       }
       .icon {
         padding: 0 3px;
