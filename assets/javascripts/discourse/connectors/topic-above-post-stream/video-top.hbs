@@ -44,14 +44,19 @@
             </div>
             <div class="video-actions-wrap">
                 <div class="video-actions">
-                    {{#if model.details.bookmarked}}
+                    <a href {{action 'toggleBookmark'}}>
+                      {{#if model.bookmarked}}
                         {{fa-icon "bookmark" modifier="3x"}}
-                    {{else}}
+                      {{else}}
                         {{fa-icon "bookmark-o" modifier="3x"}}
-                    {{/if}}
+                      {{/if}}
+                    </a>
 
                     {{fa-icon "thumbs-o-up" modifier="3x"}}
-                    {{fa-icon "share-alt" modifier="3x"}}
+
+                    <a href data-share-url="{{unbound model.shareUrl}}">
+                      {{fa-icon "share-alt" modifier="3x"}}
+                    </a>
                 </div>
             </div>
             <div class="speakers">
