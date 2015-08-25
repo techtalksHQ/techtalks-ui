@@ -3,7 +3,8 @@ export default {
   name: "patch-topic",
 
   initialize(container) {
-    const topicCtrl = container.lookup("controller:topic");
+    const topicCtrl = container.lookup("controller:topic"),
+          topicsCtrl = container.lookup("controller:discovery/topics");
 
     function playerStater(state){
       return function(){
@@ -34,6 +35,17 @@ export default {
         }
       }
     });
+
+
+    topicsCtrl.reopen({
+      isVideoListing: function(){
+        const cat = this.get("category");
+        if (cat) {
+          return !( cat.get("slug") === 'meta'|| cat.get("isUncategorizedCategory") || cat.get("read_restricted"));
+        };
+        return true;
+      }.property("category")
+    })
 
   }
 }
