@@ -14,6 +14,12 @@ html body strong {
   font-weight: 500;
 }
 
+// center 404 nicely
+#main-outlet.not-found-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
 header.d-header,
 body.on-home footer {
   .logo a {
