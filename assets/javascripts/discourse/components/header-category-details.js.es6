@@ -7,6 +7,11 @@ export default Em.Component.extend({
     return "background-color: #" +this.get("category.color") + "; color: #" + this.get('category.text_color');
   }.property("category"),
 
+  parentCategory: function(){
+    const cid = this.get("category.parent_category_id");
+    if (!cid) return;
+    return Discourse.Category.list().find(c=> c.id == cid);
+  }.property('category'),
 
   childCategories: function() {
     const categories = this.get("subCategories");

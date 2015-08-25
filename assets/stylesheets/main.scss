@@ -36,6 +36,35 @@ body.on-home footer {
   }
 }
 
+
+.category-details {
+  .badge-wrapper span.badge-category {
+    max-width: 100%;
+  }
+
+  h3 .badge-category-bg {
+    display: none !important;
+  }
+
+  h5 {
+    padding-left: 5px;
+  }
+
+  .subcategories {
+    column-count: 2;
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.2em;
+    line-height: 2em;
+  }
+}
+
 // header for all pages
 header.d-header {
   padding: 0;
@@ -88,6 +117,15 @@ header.d-header {
       &.notifications {
         position: relative;
         padding-top: 15px;
+        .badge-notification {
+          top: 4px;
+          &.unread-notifications {
+            right: 4px
+          }
+          &.unread-private-messages {
+            left: 4px;
+          }
+        }
       }
       .icon {
         padding: 0 3px;
@@ -152,20 +190,6 @@ header.d-header {
         flex-grow: 2;
         padding: 10px 20px;
         transition: 0.25s ease-in;
-
-        .subcategories {
-          column-count: 2;
-          -moz-column-count: 2;
-          -webkit-column-count: 2;
-        }
-
-        ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          font-size: 1.2em;
-          line-height: 2em;
-        }
       }
     }
 
@@ -202,20 +226,9 @@ header.d-header {
 
   .category-details {
     display: block;
-    padding:  5vw 30vw 5vw 20vw;;
-
-    .subcategories {
-      column-count: 2;
-      -moz-column-count: 2;
-      -webkit-column-count: 2;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 1.2em;
-      line-height: 2em;
+    padding:  5vw 30vw 5vw 20vw;
+    h3 {
+      font-size: 1.8em;
     }
   }
 }
