@@ -198,11 +198,11 @@ header.d-header {
   position: relative;
   left: 50%;
   transform: translate(-50%, 0px);
-  margin-top: -25px;
+  margin: -25px 0px 20px;
 
   .category-details {
     display: block;
-    padding: 4vw 20vw;
+    padding:  5vw 30vw 5vw 20vw;;
 
     .subcategories {
       column-count: 2;
