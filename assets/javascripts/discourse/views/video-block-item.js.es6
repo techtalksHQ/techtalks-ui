@@ -14,7 +14,7 @@ export default Discourse.View.extend({
   }.property('topic'),
 
   author: function(){
-    return this.get("topic.posters")[0];
+    return this.get("topic.posters.0");
   }.property('topic.posters'),
 
   catColor: function(){
