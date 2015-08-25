@@ -193,6 +193,33 @@ header.d-header {
   }
 }
 
+.category-list-header {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0px);
+  margin-top: -25px;
+
+  .category-details {
+    display: block;
+    padding: 4vw 20vw;
+
+    .subcategories {
+      column-count: 2;
+      -moz-column-count: 2;
+      -webkit-column-count: 2;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 1.2em;
+      line-height: 2em;
+    }
+  }
+}
+
 
 .video-block-item {
   width: 20vw;
