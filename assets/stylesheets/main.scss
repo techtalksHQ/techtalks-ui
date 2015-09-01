@@ -336,6 +336,14 @@ body.on-home {
     background: transparent;
     border-bottom: none;
     box-shadow: none;
+    transition: ease-in-out 0.5s background-color 0.25s;
+
+    .btn-primary,
+    .extend, .searchbox, .notifications,
+    .contents > *{
+      transition: ease-in-out 0.4s all 0.35s;
+    }
+
     &:not(:hover){
       .btn-primary {
         background-color: transparent;
@@ -345,14 +353,16 @@ body.on-home {
       }
       .extend, .searchbox, .notifications {
         opacity: 0;
-        transition: ease-in-out 0.5s opacity;
-      }.icons .icon {
+      }
+      .icons .icon {
         color: white;
+      }
+      .extend {
+        display: none;
       }
     }
     &:hover {
       background: white;
-      transition: ease-in-out 0.25s background-color;
     }
   }
 
