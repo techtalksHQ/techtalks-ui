@@ -1,6 +1,6 @@
-import SiteMapController from 'discourse/controllers/site-map';
+// import SiteMapController from 'discourse/controllers/site-map';
 
-export default SiteMapController.extend({
+export default Ember.Controller.extend({
   selectedCategoryId: null,
 
   actions: {
@@ -8,6 +8,10 @@ export default SiteMapController.extend({
       this.set("selectedCategoryId", itemId);
     }
   },
+
+  categories: function() {
+    return Discourse.Category.list();
+  }.property(),
 
   mainCategories: function() {
     return Discourse.Category.list().reject(

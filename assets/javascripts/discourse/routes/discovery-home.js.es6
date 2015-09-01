@@ -1,11 +1,8 @@
-import ShowFooter from "discourse/mixins/show-footer";
 import {findTopicList, filterQueryParams} from 'discourse/routes/build-topic-route';
 
 export default Discourse.Route.extend({
   needs: ['discovery/home'],
   model(data, transition) {
-    Discourse.ScreenTrack.current().stop();
-
     const findOpts = filterQueryParams(transition.queryParams),
           extras = { cached: this.isPoppedState(transition) };
 
