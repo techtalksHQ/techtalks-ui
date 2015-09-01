@@ -516,7 +516,6 @@ body.on-home {
 .video-top {
   .video-wrap {
     background: black none repeat scroll 0% 0%;
-    width: 100vw;
   }
 
   // move the videoblock outside of the wrapper-box
@@ -528,6 +527,7 @@ body.on-home {
       position: relative;
       left: 50%;
       transform: translate(-50%, 0px);
+      width: 100vw;
     }
   }
   // End MAGIC
@@ -677,6 +677,7 @@ body.on-home {
       }
 
       .title {
+        flex-grow: 2;
         h1 {
           line-height: 1.2em;
         }
