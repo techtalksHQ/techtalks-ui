@@ -129,7 +129,10 @@
             {{/if}}
 
             {{fa-icon "thumbs-o-up" modifier="3x"}}
-            {{fa-icon "share-alt" modifier="3x"}}
+
+            <a href data-share-url="{{unbound model.shareUrl}}">
+              {{fa-icon "share-alt" modifier="3x"}}
+            </a>
         </div>
     </div>
 </div>
