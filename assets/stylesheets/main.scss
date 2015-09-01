@@ -665,6 +665,9 @@ body.on-home {
       }
 
       .title {
+        h1 {
+          line-height: 1.2em;
+        }
         .post-date {
           float: right;
           margin-right: 30px;
@@ -749,6 +752,11 @@ body.on-home {
   }
 }
 
+
+.cooked {
+  line-height: 1.6em;
+  text-rendering: optimizelegibility;
+}
 
 
 // animations\
