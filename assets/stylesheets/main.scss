@@ -205,6 +205,10 @@ header.d-header {
       a {
         color: #999;
       }
+      .ember-view {
+        // tags are embedded in stupid ember-view divs
+        display: inline;
+      }
       ul {
         list-style: none;
         text-align: center;
