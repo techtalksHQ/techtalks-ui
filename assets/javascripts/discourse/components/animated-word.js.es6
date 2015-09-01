@@ -52,6 +52,12 @@ export default Em.Component.extend({
     this.set('currentColor', colors[parseInt(Math.random() * colors.length)]);
   },
 
+  _undo(){
+    this.get("current").popObject() ?
+      setTimeout(()=> this._undo(), 75) :
+      this._nextWord();
+  },
+
   _animateWord(){
     const word = this.get('wordsList')[this.get('listIndex')],
           pause = parseInt(this.get("pause") || 10) * 1000,
@@ -72,7 +78,8 @@ export default Em.Component.extend({
     });
 
 
-    setTimeout(()=> this._nextWord(), (word.length * speed) + pause)
+
+    setTimeout(()=> this._undo(), (word.length * speed) + pause)
   },
 
   _setup: function(){
