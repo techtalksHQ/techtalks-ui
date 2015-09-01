@@ -7,8 +7,15 @@
     {{else}}
 
       <div class="categories icons">
-        <a class="icon" href {{action "toggleSitemap"}}> Categories {{fa-icon "chevron-down" label="categories"}}
-        </a>
+        {{#if showSitemap}}
+          <a class="icon active" href {{action "hideSitemap"}}>
+            Categories {{fa-icon "chevron-up" label="categories"}}
+          </a>
+        {{else}}
+          <a class="icon" href {{action "showSitemap"}}>
+            Categories {{fa-icon "chevron-down" label="categories"}}
+          </a>
+        {{/if}}
       </div>
 
       <div class="searchbox">

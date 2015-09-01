@@ -23,8 +23,12 @@ export default {
           this.set("showSearchResults", false);
           this.set('searchTerm', "");
         },
-        toggleSitemap: function(){
-          this.set('showSitemap', !this.get("showSitemap"));
+        // some one explain why this.get("showSitemap") ALWAYS return false...
+        showSitemap: function(){
+          this.set('showSitemap', true);
+        },
+        hideSitemap: function(){
+          this.set('showSitemap', false);
         }
       },
       updateSearchTerm: function(){
