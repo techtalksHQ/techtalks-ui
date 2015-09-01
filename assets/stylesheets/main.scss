@@ -243,6 +243,14 @@ header.d-header {
   }
 }
 
+#search-box {
+  ul{
+    list-style: none;
+  }
+  .no-results {
+    text-align: center;
+  }
+}
 
 .video-block-item {
   width: 20vw;
