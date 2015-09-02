@@ -1,6 +1,6 @@
 
 export default {
-  name: "patch-topic",
+  name: "patch-topic-for-videos",
 
   initialize(container) {
     const topicCtrl = container.lookup("controller:topic"),

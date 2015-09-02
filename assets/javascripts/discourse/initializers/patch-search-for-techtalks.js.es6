@@ -2,7 +2,7 @@
 Discourse.Utilities.defaultHomepage = function() { return "home"; };
 
 export default {
-  name: "patch-search",
+  name: "patch-search-for-techtalks",
 
   initialize(container) {
     const headerCtrl = container.lookup("controller:header"),
