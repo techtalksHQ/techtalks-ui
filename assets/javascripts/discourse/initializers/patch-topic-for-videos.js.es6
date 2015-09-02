@@ -1,4 +1,12 @@
 
+import TopicView from 'discourse/views/topic';
+
+// has to happen outside of the initialize code
+// or the patching doesn't properly work
+TopicView.reopen({
+  classNameBindings: ["topic.video:isVideo"]
+});
+
 export default {
   name: "patch-topic-for-videos",
 

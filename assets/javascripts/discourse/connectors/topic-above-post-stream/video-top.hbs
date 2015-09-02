@@ -1,30 +1,18 @@
-
-<div class="video-wrap">
-    {{#video-embed class="videobox" autoresize=true player-waiting='player-waiting' player-play='player-play' player-pause='player-pause' player-seeking='player-seeking' player-seeked='player-seeked' player-ended='player-ended' ready='player-ready'}}
-
-          {{! <source src="http://05d2db1380b6504cc981-8cbed8cf7e3a131cd8f1c3e383d10041.r93.cf2.rackcdn.com/djangocon-2009/22_a-socio-political-analysis-of-open-source-community.ogv" type="video/ogg"/>}}
-
-         {{! <source src="http://05d2db1380b6504cc981-8cbed8cf7e3a131cd8f1c3e383d10041.r93.cf2.rackcdn.com/djangocon-eu-2011/0_3-cmses-in-45-minutes.m4v" type="video/mp4" /> }}
-
-         {{!<source src="http://05d2db1380b6504cc981-8cbed8cf7e3a131cd8f1c3e383d10041.r93.cf2.rackcdn.com/djangocon-2010/41_alice-in-performanceland-down-the-rabbit-hole-with-frank-wiles.flv" type="video/flv" /> }}
-
-         {{! <source src="https://vimeo.com/1093745" type="video/vimeo" /> }}
-
-         {{! Testing video selection: here is youtube}}
-         {{! <source src="https://www.youtube.com/watch?v=hzf3hTUKk8U" type="video/youtube" /> }}
-
-         <source src="https://www.youtube.com/watch?v=vbU2VXGjQj8" type="video/youtube" />
-
-          {{! Testing video selection: here is mp4 and webm}}
-          {{! <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
-          <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm" /> }}
+{{#if model.video}}
+  <div class="video-wrap">
+    {{#video-embed class="videobox" autoresize=true player-waiting='player-waiting' poster="model.video.thumbnail_url" player-play='player-play' player-pause='player-pause' player-seeking='player-seeking' player-seeked='player-seeked' player-ended='player-ended' ready='player-ready'}}
+      <source {{bind-attr src="model.video.source_url" type="model.video.type"}} />
     {{/video-embed}}
 
     <div class="video-meta-overlay">
         <div class="video-meta-inner">
             <div class="video-meta">
                 <div class="title">
-                    <h2>Clay Shirky</h2>
+                    <ul class="presenters">
+                      {{#each p in model.video.presenters}}
+                        <li>{{p.name}}</li>
+                      {{/each}}
+                    </ul>
                     <h1>
                       {{#if model.details.loaded}}
                         {{{model.fancyTitle}}}
@@ -74,9 +62,9 @@
             </div>
         </div>
     </div>
-</div>
+  </div>
 
-<div class="video-meta-under">
+  <div class="video-meta-under">
     <div class="video-meta-inner">
         <div class="likes">
          {{fa-icon "thumbs-o-up"}} {{model.like_count}}
@@ -135,4 +123,5 @@
             </a>
         </div>
     </div>
-</div>
+  </div>
+{{/if}}
